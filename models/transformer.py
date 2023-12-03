@@ -35,7 +35,7 @@ class Transformer(nn.Module):
         Returns:
             output: (batch_size, seq_len, d_model)
         """
-        return self.do_decode(tgt, self.do_encode(src, src_mask), src_mask, tgt_mask)
+        return self.do_decode(self.do_encode(src, src_mask), src_mask, tgt, tgt_mask)
 
     def do_encode(self, src, src_mask):
         return self.encoder(self.src_embed(src), src_mask)
